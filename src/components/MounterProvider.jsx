@@ -17,9 +17,8 @@ export function MounterProvider(props) {
   );
 }
 
-function setMount(keys, ticks, state) {
-  const mounters = useContext(MounterContext);
-
+function setMount(mounters, keys, ticks, state) {
+  // console.log(mounters, keys, ticks, state);
   setTimeout(() => {
     for (const key of keys) {
       mounters[key].setMount(state);
@@ -27,12 +26,11 @@ function setMount(keys, ticks, state) {
   }, ticks * 1100);
 }
 
-export function mount(keys, ticks) {
-  setMount(keys, ticks, true);
-}
-
-export function dismount(keys, ticks) {
-  setMount(keys, ticks, false);
+export function mounterFncs(mounters) {
+  return {
+    mount: (keys, ticks) => setMount(mounters, keys, ticks, true),
+    dismount: (keys, ticks) => setMount(mounters, keys, ticks, false),
+  };
 }
 
 export function useMounter() {

@@ -4,7 +4,7 @@ import { createSignal, createEffect, onMount } from "solid-js";
 import Button from "./components/Button";
 import BgText from "./components/BgText";
 import BackBtn from "./components/BackBtn";
-import Styler from "./functions/Styler";
+// import Styler from "./functions/Styler";
 import {
   IconEmail,
   IconGithub,
@@ -14,108 +14,69 @@ import {
   IconWebsite,
   IconYoutube,
 } from "./components/FontAwesome";
-import Styler2 from "./functions/Styler2";
+// import Styler2 from "./functions/Styler2";
 import SlideShow from "./components/SlideShow";
 import {
-  mount,
+  mounterFncs,
   MounterProvider,
   useMounter,
 } from "./components/MounterProvider";
 
-// to do:
+import * as BgTextList from "./data/BgTextLists";
+import StateStyler from "./functions/StateStyler";
 
-// only padd scroll when scroll height exceeds viewport
-// use context provider for colors
+// function StateStyle(isMounted, mountedStyles, unmountedStyles, constStyles) {
+//   const style = {
+//     ...constStyles,
+//     ...(() => (isMounted ? mountedStyles : unmountedStyles))(),
+//   };
+//   return style;
+// }
 
-// unmounted with unmounted styles = 0
-// mounted with unmounted styles = 1
-// mounted with mounting styles = 2
-// mounted with mounted styles = 3
+// function StateStyle2(stateHolder, mountedStyles, unmountedStyles, constStyles) {
+//   const makeStyle = () => ({
+//     ...constStyles,
+//     ...(() =>
+//       stateHolder.isStyleMounted() ? mountedStyles : unmountedStyles)(),
+//   });
 
-// mounted with mounted styles = 3
-// mounted with unmounting styles = 4
-// mounted with unmounted styles = 5        // 5 occurs at same time as 0
-// unmounted with unmounted styles = 0
+//   const [style, setStyle] = createSignal(makeStyle());
 
-function StateHolder(isInitMounted) {
-  const [currentState, setCurrentState] = createSignal(isInitMounted ? 3 : 0);
-  const [isTargetMounted, setIsTargetMounted] = createSignal(isInitMounted);
+//   createEffect(() => {
+//     setStyle(makeStyle());
+//   });
 
-  createEffect(() => {
-    if (!isTargetMounted() && currentState() === 3) {
-      setCurrentState(4);
-      setTimeout(() => {
-        setCurrentState(0);
-      }, 1000);
-    } else if (isTargetMounted() && currentState() === 0) {
-      setCurrentState(1);
-      setTimeout(() => {
-        setCurrentState(2);
-
-        setTimeout(() => {
-          setCurrentState(3);
-        }, 1000);
-      }, 100);
-    }
-  });
-
-  return {
-    state: currentState,
-    setMount: setIsTargetMounted,
-    getMount: isTargetMounted,
-    isMounted: () => currentState() > 0,
-    isStyleMounted: () => currentState() === 2 || currentState() === 3,
-    isFullyMounted: () => currentState() === 3,
-  };
-}
-
-function StateStyle(isMounted, mountedStyles, unmountedStyles, constStyles) {
-  const style = {
-    ...constStyles,
-    ...(() => (isMounted ? mountedStyles : unmountedStyles))(),
-  };
-  return style;
-}
-
-function StateStyle2(stateHolder, mountedStyles, unmountedStyles, constStyles) {
-  const makeStyle = () => ({
-    ...constStyles,
-    ...(() =>
-      stateHolder.isStyleMounted() ? mountedStyles : unmountedStyles)(),
-  });
-
-  const [style, setStyle] = createSignal(makeStyle());
-
-  createEffect(() => {
-    setStyle(makeStyle());
-  });
-
-  return style;
-}
+//   return style;
+// }
 
 function Box({ stateHolder, isVertical, color, children }) {
-  const styler = {};
+  const prestyler = {};
 
   if (isVertical) {
-    styler.mounted = { height: "100%" };
-    styler.unmounted = { height: "0%" };
+    prestyler.mounted = { height: "100%" };
+    prestyler.unmounted = { height: "0%" };
   } else {
-    styler.mounted = { width: "100%" };
-    styler.unmounted = { width: "0%" };
+    prestyler.mounted = { width: "100%" };
+    prestyler.unmounted = { width: "0%" };
   }
 
-  const makeStyle = () => {
-    return StateStyle(
-      stateHolder.isStyleMounted(),
-      styler.mounted,
-      styler.unmounted,
-      { "background-color": color }
-    );
-  };
+  // const makeStyle = () => {
+  //   return StateStyle(
+  //     stateHolder.isStyleMounted(),
+  //     styler.mounted,
+  //     styler.unmounted,
+  //     { "background-color": color }
+  //   );
+  // };
+
+  const styler2 = StateStyler(stateHolder, {
+    ...prestyler,
+    constant: { "background-color": color },
+  });
 
   return (
     <Show when={stateHolder.isMounted()}>
-      <div class={styles.HomeBox} style={makeStyle()}>
+      <div class={styles.HomeBox} style={styler2()}>
         {children}
       </div>
     </Show>
@@ -123,34 +84,44 @@ function Box({ stateHolder, isVertical, color, children }) {
 }
 
 function BgTextWrapper({ stateHolder, text }) {
-  const makeStyle = () =>
-    StateStyle(
-      stateHolder.isStyleMounted(),
-      { opacity: 1 },
-      { opacity: 0 },
-      {}
-    );
+  // const makeStyle = () =>
+  //   StateStyle(
+  //     stateHolder.isStyleMounted(),
+  //     { opacity: 1 },
+  //     { opacity: 0 },
+  //     {}
+  //   );
 
-  const [style, setStyle] = createSignal(makeStyle());
+  // const [style, setStyle] = createSignal(makeStyle());
 
-  createEffect(() => {
-    setStyle(makeStyle());
+  // createEffect(() => {
+  //   setStyle(makeStyle());
+  // });
+
+  const styler2 = StateStyler(stateHolder, {
+    mounted: { opacity: 1 },
+    unmounted: { opacity: 0 },
   });
 
   return (
     <Show when={stateHolder.isMounted()}>
-      <BgText text={text} repeat={5000} style={style}></BgText>
+      <BgText text={text} repeat={5000} style={styler2}></BgText>
     </Show>
   );
 }
 
 function HomeBtn({ stateHolder, onClick, hsl, children }) {
+  const styler2 = StateStyler(stateHolder, {
+    mounted: { opacity: 1 },
+    unmounted: { opacity: 0 },
+  });
+
   return (
     <Show when={stateHolder.isMounted()}>
       <Button
         onClick={onClick}
         hsl={hsl}
-        style={StateStyle2(stateHolder, { opacity: 1 }, { opacity: 0 }, {})}
+        style={styler2}
         duration={"5s"}
         delay={"3s"}
       >
@@ -163,21 +134,20 @@ function HomeBtn({ stateHolder, onClick, hsl, children }) {
 function Boxes({ stateholder, hsl, children }) {
   const [overflow, setOverflow] = createSignal(undefined);
 
-  const styler = Styler2(
-    stateholder,
-    {
+  const styler = StateStyler(stateholder, {
+    unmounted: {
       opacity: 0,
       transform: "translateY(100vh)",
       "overflow-y": "hidden",
     },
-    {
+    mounting: {
       opacity: 1,
       transform: "translateY(0vh)",
       "overflow-y": "hidden",
     },
-    { opacity: 1, transform: "translateY(0vh)", "overflow-y": "auto" },
-    { color: fhsl(hsl) }
-  );
+    mounted: { opacity: 1, transform: "translateY(0vh)", "overflow-y": "auto" },
+    constant: { color: fhsl(hsl) },
+  });
 
   let element;
 
@@ -1151,102 +1121,9 @@ function App() {
 }
 
 function MounterApp() {
-  // const s = {
-  //   me: StateHolder(true),
-  //   eng: StateHolder(false),
-  //   mech: StateHolder(true),
-  //   soft: StateHolder(false),
-  //   meBgtext: StateHolder(false),
-  //   mechBgtext: StateHolder(false),
-  //   softBgtext: StateHolder(false),
-
-  //   meBtn: StateHolder(false),
-  //   mechBtn: StateHolder(false),
-  //   softBtn: StateHolder(false),
-
-  //   backHomeBtn: StateHolder(false),
-
-  //   mePage: StateHolder(false),
-  //   mechPage: StateHolder(false),
-  //   softPage: StateHolder(false),
-
-  //   hychainPage: StateHolder(false),
-  //   heatmyhomePage: StateHolder(false),
-  //   accordPage: StateHolder(false),
-  //   personalPage: StateHolder(false),
-  // };
-
-  // const mount = (mounts, ticks) =>
-  //   setTimeout(() => {
-  //     for (const [key, mount] of Object.entries(mounts)) {
-  //       s[key].setMount(mount);
-  //     }
-  //   }, ticks * 1100);
-
-  // mount({ meBtn: true }, 1);
-  // mount({ eng: true }, 2);
-  // mount({ soft: true }, 3);
-  // mount({ meBgtext: true }, 1);
-  // mount({ mechBgtext: true }, 2);
-  // mount({ softBgtext: true }, 3);
-
-  // mount({ mechBtn: true }, 2);
-  // mount({ softBtn: true }, 3);
-
-  const texts = {
-    mech: [
-      "University of Warwick",
-      "Mechanical Engineer MEng",
-      "Graduated Top of Class",
-      "Fusion 360",
-      "MASTA",
-      "Abaqus",
-      "MATLAB",
-      "Simulink",
-      "Arduino",
-      "Fluid Dynamics",
-      "Biomechanics",
-      "Renewable Energy",
-      "Computer Modelling",
-      "Engines",
-      "Heat Pumps",
-      "Fuels and Combustion",
-    ],
-    me: [
-      "Bouldering",
-      "Skiing",
-      "Cycling",
-      "Video Creator",
-      "PC Builder",
-      "Hard Working",
-      "Self Motivated",
-      "Curious",
-      "Interested",
-      "Team Player",
-      "Team Leader",
-      "Organised",
-      "Gamer",
-    ],
-    soft: [
-      "Python",
-      "Java",
-      "C++",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React",
-      "Express.js",
-      "Sass",
-      "Rust",
-      "WASM",
-      "Netlify",
-      "Github",
-      "Heroku",
-      "Amazon S3",
-    ],
-  };
-
   const mounters = useMounter();
+
+  const { mount, dismount } = mounterFncs(mounters);
 
   mount(["meBtn", "meBgtext"], 1);
   mount(["eng", "mechBgtext", "mechBtn"], 2);
@@ -1261,7 +1138,7 @@ function MounterApp() {
       >
         <BgTextWrapper
           stateHolder={mounters.meBgtext}
-          text={texts.me}
+          text={BgTextList.me}
         ></BgTextWrapper>
 
         <div class={styles.HomeBoxInner}>
@@ -1270,8 +1147,8 @@ function MounterApp() {
             name={"Home"}
             color={"hsl(200, 100%, 30%)"}
             onClick={() => {
-              mount({ eng: true, meBtn: true }, 1);
-              mount({ backHomeBtn: false, mePage: false }, 0);
+              dismount(["backHomeBtn", "mePage"], 0);
+              mount(["eng", "meBtn"], 1);
             }}
           ></BackBtn>
 
@@ -1280,8 +1157,8 @@ function MounterApp() {
           <HomeBtn
             stateHolder={mounters.meBtn}
             onClick={() => {
-              mount({ eng: false, meBtn: false }, 0);
-              mount({ backHomeBtn: true, mePage: true }, 1);
+              dismount(["eng", "meBtn"], 0);
+              mount(["backHomeBtn", "mePage"], 1);
             }}
             hsl={{ h: 200, s: 100, l: 50 }}
           >
@@ -1302,7 +1179,7 @@ function MounterApp() {
         >
           <BgTextWrapper
             stateHolder={mounters.mechBgtext}
-            text={texts.mech}
+            text={BgTextList.mech}
           ></BgTextWrapper>
 
           <BackBtn
@@ -1310,18 +1187,18 @@ function MounterApp() {
             name={"Home"}
             color={"hsl(250, 60%, 77%)"}
             onClick={() => {
-              mount({ soft: true }, 2);
-              mount({ me: true, mechBtn: true }, 1);
-              mount({ backHomeBtn: false, mechPage: false }, 0);
+              dismount(["backHomeBtn", "mechPage"], 0);
+              mount(["me", "mechBtn"], 1);
+              mount(["soft"], 2);
             }}
           ></BackBtn>
 
           <HomeBtn
             stateHolder={mounters.mechBtn}
             onClick={() => {
-              mount({ soft: false }, 0);
-              mount({ me: false, mechBtn: false }, 1);
-              mount({ mechPage: true, backHomeBtn: true }, 2);
+              dismount(["soft"], 0);
+              dismount(["me", "mechBtn"], 1);
+              mount(["mechPage", "backHomeBtn"], 2);
             }}
             hsl={{ h: 250, s: 100, l: 77 }}
           >
@@ -1341,7 +1218,7 @@ function MounterApp() {
         >
           <BgTextWrapper
             stateHolder={mounters.softBgtext}
-            text={texts.soft}
+            text={BgTextList.soft}
           ></BgTextWrapper>
 
           <BackBtn
@@ -1349,18 +1226,18 @@ function MounterApp() {
             name={"Home"}
             color={"hsl(12, 82%, 50%)"}
             onClick={() => {
-              mount({ mech: true }, 2);
-              mount({ me: true, softBtn: true }, 1);
-              mount({ backHomeBtn: false, softPage: false }, 0);
+              dismount(["backHomeBtn", "softPage"], 0);
+              mount(["me", "softBtn"], 1);
+              mount(["mech"], 2);
             }}
           ></BackBtn>
 
           <HomeBtn
             stateHolder={mounters.softBtn}
             onClick={() => {
-              mount({ mech: false }, 0);
-              mount({ me: false, softBtn: false }, 1);
-              mount({ backHomeBtn: true, softPage: true }, 2);
+              dismount(["mech"], 0);
+              dismount(["me", "softBtn"], 1);
+              mount(["backHomeBtn", "softPage"], 2);
             }}
             hsl={{ h: 12, s: 82, l: 50 }}
           >
