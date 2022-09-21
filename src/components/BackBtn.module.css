@@ -1,0 +1,59 @@
+.Button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: white;
+
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+
+  margin: 1rem;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+  transition: all 0.2s ease-in-out;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 1s ease-in-out;
+}
+
+.Button p {
+  transition: all 1s ease-in-out;
+}
+
+.Button p:first-child {
+  overflow: hidden;
+  text-align: left;
+  opacity: 1;
+}
+
+.Button p:last-child {
+  overflow: hidden;
+  text-align: right;
+  opacity: 1;
+}
+
+.Button:not(:hover) p:last-child {
+  width: 0px !important;
+  opacity: 0;
+}
+
+.Button:hover p:first-child {
+  width: 0px !important;
+  opacity: 0;
+}
+
+.Button:hover p:last-child {
+  opacity: 1;
+}
+
+.Button svg {
+  width: 1em;
+}

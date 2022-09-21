@@ -1,0 +1,84 @@
+.Button {
+  box-sizing: border-box;
+
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
+
+  transition: opacity 1s ease-in-out, background-color 0.3s ease-in-out;
+  z-index: 0;
+}
+
+.Inner {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+
+  box-sizing: border-box;
+  margin: 1px;
+  height: 100%;
+  width: calc(100% - 2px);
+  flex-grow: 1;
+  background-color: lime;
+  cursor: pointer;
+  text-align: center;
+}
+
+.Inner p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-size: xx-large;
+  padding: 1.5rem 3rem;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.Border {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  height: 50%;
+
+  transform: translate(-50%, -50%) rotate(-45deg);
+
+  transition: width 1s ease-in-out, height 1s ease-in-out;
+
+  animation-name: rotater;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  transform-origin: center;
+  animation-timing-function: linear;
+  z-index: -1;
+  box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 10px 10px;
+}
+
+.Button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+@keyframes rotater {
+  from {
+    top: 0%;
+    left: 0%;
+  }
+  30% {
+    top: 150%;
+    left: 150%;
+  }
+  to {
+    top: 150%;
+    left: 150%;
+  }
+}
