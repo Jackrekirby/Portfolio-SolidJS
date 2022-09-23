@@ -13,13 +13,13 @@ function Modules({ modules }) {
       return {
         transform,
         color: "white",
-        "background-color": colorer.fhsla(1.0),
+        "background-color": colorer.dark(1.0),
       };
     } else {
       return {
         transform,
-        color: colorer.fhsla(1.0),
-        "background-color": colorer.fhsla(0.2),
+        color: colorer.dark(1.0),
+        "background-color": colorer.dark(0.2),
       };
     }
   };

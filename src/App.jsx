@@ -64,9 +64,18 @@ function MounterApp() {
   mount(["eng", "mechBgtext", "mechBtn"], 2);
   mount(["soft", "softBgtext", "softBtn"], 3);
 
+  // 12 82 50 // red
+  // 221, 15, 25 // grey
+
+  const hsl = (h, s, l) => ({
+    h,
+    s,
+    l,
+  });
+
   return (
     <>
-      <ColorProvider hsl={{ h: 200, s: 100, l: 50 }}>
+      <ColorProvider hue={215} saturation={18} lightness={57}>
         <Box stateHolder={mounters.me} isVertical={false}>
           <BgText stateHolder={mounters.meBgtext} text={BgTextList.me}></BgText>
 
@@ -95,9 +104,9 @@ function MounterApp() {
         </Box>
       </ColorProvider>
 
-      <ColorProvider hsl={{ h: 250, s: 100, l: 77 }}>
+      <ColorProvider hue={250} saturation={64} lightness={75}>
         <Box stateHolder={mounters.eng} isVertical={false}>
-          <ColorProvider hsl={{ h: 250, s: 100, l: 77 }}>
+          <ColorProvider hue={250} saturation={64} lightness={75}>
             <Box stateHolder={mounters.mech} isVertical={true}>
               <BgText
                 stateHolder={mounters.mechBgtext}
@@ -129,7 +138,7 @@ function MounterApp() {
             </Box>
           </ColorProvider>
 
-          <ColorProvider hsl={{ h: 12, s: 82, l: 50 }}>
+          <ColorProvider hue={200} saturation={100} lightness={50}>
             <Box stateHolder={mounters.soft} isVertical={true}>
               <BgText
                 stateHolder={mounters.softBgtext}

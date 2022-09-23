@@ -10,8 +10,8 @@ function MechanicalPage() {
   const mounters = useMounter();
 
   const style = {
-    h1: { color: colorer.fhsl },
-    h2: { "background-color": colorer.fhsl },
+    h1: { color: colorer.dark() },
+    h2: { "background-color": colorer.dark() },
   };
 
   return (

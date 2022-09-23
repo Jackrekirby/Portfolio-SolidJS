@@ -19,7 +19,7 @@ function Boxes({ stateholder, children }) {
       "overflow-y": "hidden",
     },
     mounted: { opacity: 1, transform: "translateY(0vh)", "overflow-y": "auto" },
-    constant: { color: colorer.fhsl },
+    constant: { color: colorer.dark() },
   });
 
   let element;

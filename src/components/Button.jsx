@@ -2,7 +2,7 @@ import StateStyler from "../functions/StateStyler";
 import styles from "./Button.module.css";
 import { useColor } from "./ColorProvider";
 
-function ButtonInner({ children, onClick, hsl, style, duration, delay }) {
+function ButtonInner({ children, onClick, style, duration, delay }) {
   const colorer = useColor();
 
   // const borderStyle = {
@@ -23,7 +23,7 @@ function ButtonInner({ children, onClick, hsl, style, duration, delay }) {
       <div
         class={styles.Inner}
         style={{
-          "background-color": colorer.fhsla(0.5),
+          "background-color": colorer.light(0.5),
         }}
       >
         {children}
@@ -32,7 +32,7 @@ function ButtonInner({ children, onClick, hsl, style, duration, delay }) {
   );
 }
 
-function Button({ stateHolder, onClick, hsl, children }) {
+function Button({ stateHolder, onClick, children }) {
   const styler = StateStyler(stateHolder, {
     mounted: { opacity: 1 },
     unmounted: { opacity: 0 },
@@ -42,7 +42,6 @@ function Button({ stateHolder, onClick, hsl, children }) {
     <Show when={stateHolder.isMounted()}>
       <ButtonInner
         onClick={onClick}
-        hsl={hsl}
         style={styler}
         duration={"5s"}
         delay={"3s"}

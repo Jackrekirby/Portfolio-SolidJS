@@ -6,7 +6,7 @@ function Box2({ title, children }) {
 
   return (
     <div class={styles.Box}>
-      <h1 style={{ color: colorer.fhsl }}>{title}</h1>
+      <h1 style={{ color: colorer.dark() }}>{title}</h1>
       <div class={styles.Inner}>{children}</div>
     </div>
   );

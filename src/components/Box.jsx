@@ -16,7 +16,7 @@ function Box({ stateHolder, isVertical, children }) {
 
   const styler = StateStyler(stateHolder, {
     ...prestyler,
-    constant: { "background-color": colorer.fhsl },
+    constant: { "background-color": colorer.light() },
   });
 
   return (

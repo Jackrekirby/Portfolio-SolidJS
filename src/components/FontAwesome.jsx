@@ -16,7 +16,7 @@ const styler = (size) => {
 function getColor(color) {
   const colorer = useColor();
   if (color === undefined) {
-    color = colorer.fhsl;
+    color = colorer.dark();
   }
   return color;
 }
@@ -58,7 +58,7 @@ export function IconArrowRight({ color, size }) {
   return (
     <svg
       style={styler(size)}
-      fill={color}
+      fill={getColor(color)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"
     >
@@ -71,7 +71,7 @@ export function IconArrowLeft({ color, size }) {
   return (
     <svg
       style={styler(size)}
-      fill={color}
+      fill={getColor(color)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"
     >
@@ -84,7 +84,7 @@ export function IconGithub({ color, size }) {
   return (
     <svg
       style={styler(size)}
-      fill={color}
+      fill={getColor(color)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"
     >
@@ -97,7 +97,7 @@ export function IconYoutube({ color, size }) {
   return (
     <svg
       style={styler(size)}
-      fill={color}
+      fill={getColor(color)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"
     >
@@ -110,7 +110,7 @@ export function IconImage({ color, size }) {
   return (
     <svg
       style={styler(size)}
-      fill={color}
+      fill={getColor(color)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
     >
@@ -123,7 +123,7 @@ export function IconLinkedin({ color, size }) {
   return (
     <svg
       style={styler(size)}
-      fill={color}
+      fill={getColor(color)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"
     >
@@ -136,7 +136,7 @@ export function IconEmail({ color, size }) {
   return (
     <svg
       style={styler(size)}
-      fill={color}
+      fill={getColor(color)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"
     >
@@ -149,7 +149,7 @@ export function IconTechStack({ color, size }) {
   return (
     <svg
       style={styler(size)}
-      fill={color}
+      fill={getColor(color)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"
     >
@@ -162,7 +162,7 @@ export function IconWebsite({ color, size }) {
   return (
     <svg
       style={styler(size)}
-      fill={color}
+      fill={getColor(color)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"
     >

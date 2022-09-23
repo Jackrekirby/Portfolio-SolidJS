@@ -1,15 +1,13 @@
 import Box2 from "../components/Box2";
 import Boxes from "../components/Boxes";
-import { useColor } from "../components/ColorProvider";
 import Links from "../components/Links";
 import { useMounter } from "../components/MounterProvider";
 
 function MePage() {
   const mounters = useMounter();
 
-  const colorer = useColor();
   return (
-    <Boxes stateholder={mounters.mePage} hsl={colorer.hsl}>
+    <Boxes stateholder={mounters.mePage}>
       <Box2 title={"About Me"}>
         <p>
           Hi I'm Jack Kirby. I recently graduated with a Master's in Mechanical

@@ -18,7 +18,7 @@ function SoftwarePage() {
       <div class={styles.List}>
         <For each={items}>
           {(item) => (
-            <p style={{ "background-color": colorer.fhsla(0.8) }}>{item}</p>
+            <p style={{ "background-color": colorer.dark() }}>{item}</p>
           )}
         </For>
       </div>
@@ -29,7 +29,7 @@ function SoftwarePage() {
     return (
       <div class={styles.List}>
         <a
-          style={{ "background-color": colorer.fhsla(0.8) }}
+          style={{ "background-color": colorer.dark() }}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
@@ -48,11 +48,11 @@ function SoftwarePage() {
           <div class={styles.Cell}>
             <div class={styles.Pills}>
               <div class={styles.Pill}>
-                <IconTechStack color={colorer.fhsl} size={"xl"}></IconTechStack>
+                <IconTechStack size={"xl"}></IconTechStack>
                 <PillList items={["Node", "AWS S3", "MATLAB", "+"]}></PillList>
               </div>
               <div class={styles.Pill}>
-                <IconWebsite color={colorer.fhsl} size={"xl"}></IconWebsite>
+                <IconWebsite size={"xl"}></IconWebsite>
                 <PillLink
                   href={"hychain.co.uk"}
                   name={"hychain.co.uk"}
@@ -75,20 +75,20 @@ function SoftwarePage() {
           <div class={styles.Cell}>
             <div class={styles.Pills}>
               <div class={styles.Pill}>
-                <IconTechStack color={colorer.fhsl} size={"xl"}></IconTechStack>
+                <IconTechStack size={"xl"}></IconTechStack>
                 <PillList
                   items={["Express.js", "Rust", "WASM", "+"]}
                 ></PillList>
               </div>
               <div class={styles.Pill}>
-                <IconWebsite color={colorer.fhsl} size={"xl"}></IconWebsite>
+                <IconWebsite size={"xl"}></IconWebsite>
                 <PillLink
                   href={"heatmyhome.ninja"}
                   name={"heatmyhome.ninja"}
                 ></PillLink>
               </div>
               <div class={styles.Pill}>
-                <IconGithub color={colorer.fhsl} size={"xl"}></IconGithub>
+                <IconGithub size={"xl"}></IconGithub>
                 <PillLink
                   href={"github.com/Jackrekirby/HeatMyHome-Simulator-Dev"}
                   name={"GitHub Repository"}
@@ -111,11 +111,11 @@ function SoftwarePage() {
           <div class={styles.Cell}>
             <div class={styles.Pills}>
               <div class={styles.Pill}>
-                <IconTechStack color={colorer.fhsl} size={"xl"}></IconTechStack>
+                <IconTechStack size={"xl"}></IconTechStack>
                 <PillList items={["C++", "MATLAB", "JSON"]}></PillList>
               </div>
               <div class={styles.Pill}>
-                <IconGithub color={colorer.fhsl} size={"xl"}></IconGithub>
+                <IconGithub size={"xl"}></IconGithub>
                 <PillLink
                   href={"github.com/Jackrekirby/AcCoRD2"}
                   name={"GitHub Repository"}
@@ -138,7 +138,7 @@ function SoftwarePage() {
           <div class={styles.Cell}>
             <div class={styles.Pills}>
               <div class={styles.Pill}>
-                <IconTechStack color={colorer.fhsl} size={"xl"}></IconTechStack>
+                <IconTechStack size={"xl"}></IconTechStack>
                 <PillList
                   items={["Java", "C++", "React", "Rust", "+"]}
                 ></PillList>
