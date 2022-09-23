@@ -2,15 +2,17 @@ import styles from "./BackBtn.module.css";
 import Styler from "../functions/Styler";
 import { IconCircleArrowLeft } from "./FontAwesome";
 import { createSignal, createEffect } from "solid-js";
+import { useColor } from "./ColorProvider";
 
 function BackBtn({ stateholder, name, onClick, color, order }) {
+  const colorer = useColor();
   let element;
 
   const styler = Styler(
     stateholder,
     { opacity: 1 },
     { opacity: 0 },
-    { color, transform: `translateY(${3 * order}rem)` }
+    { color: colorer.fhsl, transform: `translateY(${3 * order}rem)` }
   );
 
   const [width, setWidth] = createSignal();
@@ -29,7 +31,10 @@ function BackBtn({ stateholder, name, onClick, color, order }) {
     <Show when={stateholder.isMounted()}>
       <div class={styles.Button} onClick={onClick} style={styler()}>
         <p style={width()}>{name}</p>
-        <IconCircleArrowLeft color={color} size="m"></IconCircleArrowLeft>
+        <IconCircleArrowLeft
+          color={colorer.fhsl}
+          size="m"
+        ></IconCircleArrowLeft>
         <p ref={element} style={width()}>
           {name}
         </p>

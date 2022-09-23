@@ -1,0 +1,29 @@
+.Modules {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.Modules p {
+  max-width: 10rem;
+  padding: 1rem;
+  text-align: center;
+  margin: 1rem;
+  box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+}
+
+.Modules h1 {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  font-size: 5rem;
+  overflow: hidden;
+  height: 5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+}

@@ -1,5 +1,7 @@
 // import styles from "./FontAwesome.module.css";
 
+import { useColor } from "./ColorProvider";
+
 const IconSizes = {
   m: "1em",
   xl: "1.5em",
@@ -11,11 +13,39 @@ const styler = (size) => {
   return { "min-width": w, "max-width": w };
 };
 
+function getColor(color) {
+  const colorer = useColor();
+  if (color === undefined) {
+    color = colorer.fhsl;
+  }
+  return color;
+}
+
+export function Icon({ name, color, size }) {
+  const c = getColor(color);
+  const fnc = {
+    CircleArrowLeft: () => (
+      <IconCircleArrowLeft color={c} size={size}></IconCircleArrowLeft>
+    ),
+    ArrowRight: () => <IconArrowRight color={c} size={size}></IconArrowRight>,
+    ArrowLeft: () => <IconArrowLeft color={c} size={size}></IconArrowLeft>,
+    Github: () => <IconGithub color={c} size={size}></IconGithub>,
+    Youtube: () => <IconYoutube color={c} size={size}></IconYoutube>,
+    Image: () => <IconImage color={c} size={size}></IconImage>,
+    Linkedin: () => <IconLinkedin color={c} size={size}></IconLinkedin>,
+    Email: () => <IconEmail color={c} size={size}></IconEmail>,
+    TechStack: () => <IconTechStack color={c} size={size}></IconTechStack>,
+    Website: () => <IconWebsite color={c} size={size}></IconWebsite>,
+  };
+
+  return fnc[name]();
+}
+
 export function IconCircleArrowLeft({ color, size }) {
   return (
     <svg
       style={styler(size)}
-      fill={color}
+      fill={getColor(color)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
     >
@@ -75,6 +105,7 @@ export function IconYoutube({ color, size }) {
     </svg>
   );
 }
+
 export function IconImage({ color, size }) {
   return (
     <svg
@@ -87,6 +118,7 @@ export function IconImage({ color, size }) {
     </svg>
   );
 }
+
 export function IconLinkedin({ color, size }) {
   return (
     <svg

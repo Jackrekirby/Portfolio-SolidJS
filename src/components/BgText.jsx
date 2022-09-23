@@ -1,6 +1,7 @@
+import StateStyler from "../functions/StateStyler";
 import styles from "./BgText.module.css";
 
-function BgText({ text, repeat, style }) {
+function BgTextInner({ text, repeat, style }) {
   const seperator = "&ensp;";
 
   const generate = (list, size) => {
@@ -32,6 +33,19 @@ function BgText({ text, repeat, style }) {
     <div class={styles.BgText} style={style()}>
       <p innerHTML={string}></p>
     </div>
+  );
+}
+
+function BgText({ stateHolder, text }) {
+  const styler = StateStyler(stateHolder, {
+    mounted: { opacity: 1 },
+    unmounted: { opacity: 0 },
+  });
+
+  return (
+    <Show when={stateHolder.isMounted()}>
+      <BgTextInner text={text} repeat={5000} style={styler}></BgTextInner>
+    </Show>
   );
 }
 
