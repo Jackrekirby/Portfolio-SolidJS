@@ -5,6 +5,9 @@ import { mounterFncs, useMounter } from "../components/MounterProvider";
 import SlideShow from "../components/SlideShow";
 import Technologies from "../components/Technologies";
 
+import img_home from "../assets/projects/heatmyhome/home.png";
+import img_results from "../assets/projects/heatmyhome/results.png";
+
 function HeatmyhomePage() {
   const mounters = useMounter();
   const { mount, dismount } = mounterFncs(mounters);
@@ -25,11 +28,11 @@ function HeatmyhomePage() {
           <SlideShow
             images={[
               {
-                src: "/src/assets/projects/heatmyhome/home.png",
+                src: img_home,
                 alt: "home page",
               },
               {
-                src: "/src/assets/projects/heatmyhome/results.png",
+                src: img_results,
                 alt: "results page",
               },
             ]}

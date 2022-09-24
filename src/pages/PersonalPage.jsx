@@ -12,6 +12,9 @@ import img_samples_normal from "../assets/projects/personal/raytracing/samples_i
 import img_color_bvh from "../assets/projects/personal/raytracing/color_image_bvh.png";
 import img_web_ui from "../assets/projects/personal/raytracing/web_ui.png";
 
+import img_whe_v1 from "../assets/projects/personal/whe/v1.png";
+import img_whe_v2 from "../assets/projects/personal/whe/v2.png";
+
 function PersonalPage() {
   const mounters = useMounter();
   const { mount, dismount } = mounterFncs(mounters);
@@ -118,13 +121,13 @@ function PersonalPage() {
           <SlideShow
             images={[
               {
-                src: "./src/assets/projects/personal/whe/v1.png",
+                src: img_whe_v1,
                 alt: "environment 1",
                 caption:
                   "A screenshot of the original version, listing series by A-Z.",
               },
               {
-                src: "./src/assets/projects/personal/whe/v2.png",
+                src: img_whe_v2,
                 alt: "environment 2",
                 caption:
                   "A screenshot of the new version, listing series by popularity.",

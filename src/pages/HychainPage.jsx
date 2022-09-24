@@ -5,6 +5,9 @@ import { mounterFncs, useMounter } from "../components/MounterProvider";
 import SlideShow from "../components/SlideShow";
 import Technologies from "../components/Technologies";
 
+import img_1 from "../assets/projects/hychain/img1.png";
+import img_2 from "../assets/projects/hychain/img2.png";
+
 function HychainPage() {
   const mounters = useMounter();
 
@@ -26,11 +29,11 @@ function HychainPage() {
           <SlideShow
             images={[
               {
-                src: "/src/assets/projects/hychain/img1.png",
+                src: img_1,
                 alt: "hychain screenshot",
               },
               {
-                src: "/src/assets/projects/hychain/img2.png",
+                src: img_2,
                 alt: "hychain screenshot 2",
               },
             ]}
