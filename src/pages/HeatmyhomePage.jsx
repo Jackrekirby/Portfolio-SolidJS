@@ -25,11 +25,11 @@ function HeatmyhomePage() {
           <SlideShow
             images={[
               {
-                src: "./src/assets/projects/heatmyhome/home.png",
+                src: "/src/assets/projects/heatmyhome/home.png",
                 alt: "home page",
               },
               {
-                src: "./src/assets/projects/heatmyhome/results.png",
+                src: "/src/assets/projects/heatmyhome/results.png",
                 alt: "results page",
               },
             ]}

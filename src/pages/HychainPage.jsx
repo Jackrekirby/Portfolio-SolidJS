@@ -26,11 +26,11 @@ function HychainPage() {
           <SlideShow
             images={[
               {
-                src: "./src/assets/projects/hychain/img1.png",
+                src: "/src/assets/projects/hychain/img1.png",
                 alt: "hychain screenshot",
               },
               {
-                src: "./src/assets/projects/hychain/img2.png",
+                src: "/src/assets/projects/hychain/img2.png",
                 alt: "hychain screenshot 2",
               },
             ]}

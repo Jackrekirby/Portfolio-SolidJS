@@ -5,7 +5,7 @@ function Logos({ logos }) {
     <div class={styles.Logos}>
       <For each={logos}>
         {(logo) => {
-          return <img src={`./src/assets/logos/${logo}.png`} alt=""></img>;
+          return <img src={`src/assets/logos/${logo}.png`} alt=""></img>;
         }}
       </For>
     </div>
