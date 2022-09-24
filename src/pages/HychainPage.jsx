@@ -23,6 +23,7 @@ function HychainPage() {
           dismount(["hychainPage"], 0);
           mount(["softPage"], 1);
         }}
+        width={"5.5rem"}
       ></BackBtn>
       <Boxes stateholder={mounters.hychainPage}>
         <Box2 title={"HyChain.co.uk"}>

@@ -29,6 +29,7 @@ function PersonalPage() {
           dismount(["personalPage"], 0);
           mount(["softPage"], 1);
         }}
+        width={"5.5rem"}
       ></BackBtn>
       <Boxes stateholder={mounters.personalPage}>
         <Box2 title={"Portfolio"}>

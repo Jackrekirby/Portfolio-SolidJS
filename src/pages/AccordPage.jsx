@@ -27,6 +27,7 @@ function AccordPage() {
           dismount(["accordPage"], 0);
           mount(["softPage"], 1);
         }}
+        width={"5.5rem"}
       ></BackBtn>
       <Boxes stateholder={mounters.accordPage}>
         <Box2 title={"AcCoRD 2.0"}>

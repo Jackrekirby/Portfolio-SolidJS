@@ -87,6 +87,7 @@ function MounterApp() {
                 dismount(["backHomeBtn", "mePage"], 0);
                 mount(["eng", "meBtn"], 1);
               }}
+              width={"4rem"}
             ></BackBtn>
 
             <MePage s={mounters}></MePage>
@@ -121,6 +122,7 @@ function MounterApp() {
                   mount(["me", "mechBtn"], 1);
                   mount(["soft"], 2);
                 }}
+                width={"4rem"}
               ></BackBtn>
 
               <Button
@@ -153,6 +155,7 @@ function MounterApp() {
                   mount(["me", "softBtn"], 1);
                   mount(["mech"], 2);
                 }}
+                width={"4rem"}
               ></BackBtn>
 
               <Button

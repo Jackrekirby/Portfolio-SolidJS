@@ -22,6 +22,7 @@ function HeatmyhomePage() {
           dismount(["heatmyhomePage"], 0);
           mount(["softPage"], 1);
         }}
+        width={"5.5rem"}
       ></BackBtn>
       <Boxes stateholder={mounters.heatmyhomePage}>
         <Box2 title={"HeatMyHome.ninja"}>
