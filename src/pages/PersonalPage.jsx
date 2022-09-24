@@ -6,6 +6,12 @@ import Logos from "../components/Logos";
 import { mounterFncs, useMounter } from "../components/MounterProvider";
 import SlideShow from "../components/SlideShow";
 
+import img_color_normal from "../assets/projects/personal/raytracing/color_image_normal.png";
+import img_color_large from "../assets/projects/personal/raytracing/color_image_large.png";
+import img_samples_normal from "../assets/projects/personal/raytracing/samples_image_normal.png";
+import img_color_bvh from "../assets/projects/personal/raytracing/color_image_bvh.png";
+import img_web_ui from "../assets/projects/personal/raytracing/web_ui.png";
+
 function PersonalPage() {
   const mounters = useMounter();
   const { mount, dismount } = mounterFncs(mounters);
@@ -56,31 +62,31 @@ function PersonalPage() {
           <SlideShow
             images={[
               {
-                src: "/src/assets/projects/personal/raytracing/color_image_normal.png",
+                src: img_color_normal,
                 alt: "environment 1",
                 caption:
                   "An image generated using the raytracer. The Full HD resolution image, containing 30,000 sphere took 40 minutes to generate. Contains lambertian, metal and dielectric metals, of different colors, roughness and refractive indexes.",
               },
               {
-                src: "/src/assets/projects/personal/raytracing/color_image_large.png",
+                src: img_color_large,
                 alt: "environment 1",
                 caption:
                   "An zoomed out image of the same scene, showing all 30,000 spheres",
               },
               {
-                src: "/src/assets/projects/personal/raytracing/samples_image_normal.png",
+                src: img_samples_normal,
                 alt: "environment 1",
                 caption:
                   "An image showing an optimisation to reduce the number of samples per pixel. Darker pixels used fewer rays to generate before their color stabilised to below a threshold tolerance. The sky and lambertian surfaces contain the darkest pixels. The lightest pixels occur on the boundary of sphere, dielectric and metalic surfaces.",
               },
               {
-                src: "/src/assets/projects/personal/raytracing/color_image_bvh.png",
+                src: img_color_bvh,
                 alt: "environment 1",
                 caption:
                   "An image showing an optimisation to reduce the number of collision checks between a ray and all the spheres in the scene. This is done through dividing the spheres in the scene into a bounding volume hierachy. The spheres in each boundary volume are assigned a unique color.",
               },
               {
-                src: "/src/assets/projects/personal/raytracing/web_ui.png",
+                src: img_web_ui,
                 alt: "environment 1",
                 caption:
                   "A web user interface to build spherical scenes and render them.",
