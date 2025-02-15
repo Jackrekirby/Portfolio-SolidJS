@@ -19,6 +19,8 @@ import AccordPage from "./pages/AccordPage";
 import PersonalPage from "./pages/PersonalPage";
 import HychainPage from "./pages/HychainPage";
 import SoftwarePage from "./pages/SoftwarePage";
+import { createSignal } from "solid-js";
+import AuroraPage from "./pages/AuroraPage";
 
 const initMountStates = {
   me: true,
@@ -43,6 +45,7 @@ const initMountStates = {
   heatmyhomePage: false,
   accordPage: false,
   personalPage: false,
+  auroraPage: false,
 };
 
 function App() {
@@ -58,11 +61,22 @@ function App() {
 function MounterApp() {
   const mounters = useMounter();
 
+  const [pageInTransition, setPageInTransition] = createSignal(true)
+
   const { mount, dismount } = mounterFncs(mounters);
 
   mount(["meBtn", "meBgtext"], 1);
   mount(["eng", "mechBgtext", "mechBtn"], 2);
   mount(["soft", "softBgtext", "softBtn"], 3);
+
+  const setPageLoaded = (delayInSeconds) => {
+    setTimeout(() => {
+      console.log('page loaded')
+      setPageInTransition(false)
+    }, delayInSeconds * 1000); 
+  }
+  
+  setPageLoaded(4)
 
   // 12 82 50 // red
   // 221, 15, 25 // grey
@@ -84,8 +98,11 @@ function MounterApp() {
               stateholder={mounters.backHomeBtn}
               name={"Home"}
               onClick={() => {
+                if(pageInTransition()) return
+                setPageInTransition(true)
                 dismount(["backHomeBtn", "mePage"], 0);
                 mount(["eng", "meBtn"], 1);
+                setPageLoaded(2)
               }}
               width={"4rem"}
             ></BackBtn>
@@ -95,8 +112,11 @@ function MounterApp() {
             <Button
               stateHolder={mounters.meBtn}
               onClick={() => {
+                if(pageInTransition()) return
+                setPageInTransition(true)
                 dismount(["eng", "meBtn"], 0);
                 mount(["backHomeBtn", "mePage"], 1);
+                setPageLoaded(2)
               }}
             >
               <p>Jack Kirby</p>
@@ -118,9 +138,12 @@ function MounterApp() {
                 stateholder={mounters.backHomeBtn}
                 name={"Home"}
                 onClick={() => {
+                  if(pageInTransition()) return
+                  setPageInTransition(true)
                   dismount(["backHomeBtn", "mechPage"], 0);
                   mount(["me", "mechBtn"], 1);
                   mount(["soft"], 2);
+                  setPageLoaded(3)
                 }}
                 width={"4rem"}
               ></BackBtn>
@@ -128,9 +151,12 @@ function MounterApp() {
               <Button
                 stateHolder={mounters.mechBtn}
                 onClick={() => {
+                  if(pageInTransition()) return
+                  setPageInTransition(true)
                   dismount(["soft"], 0);
                   dismount(["me", "mechBtn"], 1);
                   mount(["mechPage", "backHomeBtn"], 2);
+                  setPageLoaded(3)
                 }}
               >
                 <p>Mechanical Engineer</p>
@@ -151,9 +177,12 @@ function MounterApp() {
                 stateholder={mounters.backHomeBtn}
                 name={"Home"}
                 onClick={() => {
+                  if(pageInTransition()) return
+                  setPageInTransition(true)
                   dismount(["backHomeBtn", "softPage"], 0);
                   mount(["me", "softBtn"], 1);
                   mount(["mech"], 2);
+                  setPageLoaded(3)
                 }}
                 width={"4rem"}
               ></BackBtn>
@@ -161,15 +190,20 @@ function MounterApp() {
               <Button
                 stateHolder={mounters.softBtn}
                 onClick={() => {
+                  if(pageInTransition()) return
+                  setPageInTransition(true)
                   dismount(["mech"], 0);
                   dismount(["me", "softBtn"], 1);
                   mount(["backHomeBtn", "softPage"], 2);
+                  setPageLoaded(3)
                 }}
               >
                 <p>Software Engineer</p>
               </Button>
 
               <SoftwarePage></SoftwarePage>
+
+              <AuroraPage></AuroraPage>
 
               <HychainPage></HychainPage>
 

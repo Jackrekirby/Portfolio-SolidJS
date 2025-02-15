@@ -10,12 +10,13 @@ function MePage() {
     <Boxes stateholder={mounters.mePage}>
       <Box2 title={"About Me"}>
         <p>
-          Hi I'm Jack Kirby. I recently graduated with a Master's in Mechanical
-          Engineering from the University of Warwick. Alongside my formal
+          Hi I'm Jack Kirby. I have been a software engineer at Aurora Energy Research in Oxford since Autumn 2022.
+          I  graduated with a Master's in Mechanical
+          Engineering from the University of Warwick in 2022. Alongside my formal
           education, since 2013 I have been developing my programming skills.
           Beginning with a Caesar shift encoder and decoder in QB64, I have
           progressed to many other languages to achieve my personal projects
-          including Python, Java, C++, Rust, HTML, CSS & JavaScript.
+          including Python, Java, C++, Rust, Go, HTML, CSS & JavaScript.
         </p>
         <br></br>
         <p>

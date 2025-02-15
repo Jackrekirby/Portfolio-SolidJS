@@ -8,6 +8,13 @@ import {
 } from "../components/FontAwesome";
 import { mounterFncs, useMounter } from "../components/MounterProvider";
 
+function HeaderSpacer({}) {
+  return (
+    <div style={{ 'min-height': '64px' }}></div>
+  );
+}
+
+
 function SoftwarePage() {
   const mounters = useMounter();
   const colorer = useColor();
@@ -42,9 +49,36 @@ function SoftwarePage() {
 
   return (
     <Boxes stateholder={mounters.softPage}>
+      <HeaderSpacer/>
       <div class={styles.SoftwareProjects}>
         <h1>Projects</h1>
         <div class={styles.Grid}>
+        <div class={styles.Cell}>
+            <div class={styles.Pills}>
+              <div class={styles.Pill}>
+                <IconTechStack size={"xl"}></IconTechStack>
+                <PillList items={["AWS", "Python", "Typescript"]}></PillList>
+              </div>
+              <div class={styles.Pill}>
+                <IconWebsite size={"xl"}></IconWebsite>
+                <PillLink
+                  href={"https://auroraer.com"}
+                  name={"https://auroraer.com"}
+                ></PillLink>
+              </div>
+            </div>
+            <h2
+              onClick={() => {
+                dismount(["softPage"], 0);
+                mount(["auroraPage"], 1);
+              }}
+            >
+              Aurora Energy Research
+            </h2>
+            <p class={styles.Description}>
+              My career as a Software Engineer at Aurora Energy Research
+            </p>
+          </div>
           <div class={styles.Cell}>
             <div class={styles.Pills}>
               <div class={styles.Pill}>

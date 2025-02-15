@@ -10,7 +10,7 @@ const IconSizes = {
 
 const styler = (size) => {
   const w = IconSizes[size];
-  return { "min-width": w, "max-width": w };
+  return { "min-width": w, "max-width": w, 'display': 'flex', 'flex-direction': 'column' };
 };
 
 function getColor(color) {

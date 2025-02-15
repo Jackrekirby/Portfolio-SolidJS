@@ -8,7 +8,7 @@
   align-items: center;
   z-index: 1;
   /* height: 0px; */
-  min-height: max-content;
+  /* min-height: max-content; */
   margin: auto;
 
   transition: height 1s ease-in-out, opacity 1s ease-in-out,

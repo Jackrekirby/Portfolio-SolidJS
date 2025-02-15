@@ -14,7 +14,7 @@ function BackBtn({ stateholder, name, onClick, order, width }) {
     { opacity: 0 },
     {
       color: colorer.dark(),
-      transform: `translateY(${3 * order}rem)`,
+      transform: `translateX(${8 * order}rem)`,
     }
   );
 

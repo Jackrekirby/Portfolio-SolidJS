@@ -5,6 +5,14 @@ import Logos from "../components/Logos";
 import Modules from "../components/Modules";
 import { useMounter } from "../components/MounterProvider";
 
+
+function HeaderSpacer({}) {
+  return (
+    <div style={{ 'min-height': '64px' }}></div>
+  );
+}
+
+
 function MechanicalPage() {
   const colorer = useColor();
   const mounters = useMounter();
@@ -16,6 +24,7 @@ function MechanicalPage() {
 
   return (
     <Boxes stateholder={mounters.mechPage}>
+      <HeaderSpacer/>
       <Box2 title={"University Modules"}>
         <h2 style={style.h2}>Year One</h2>
         <Modules

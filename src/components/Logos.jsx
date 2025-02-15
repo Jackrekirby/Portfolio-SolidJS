@@ -27,6 +27,13 @@ import img_sass from "../assets/logos/sass.png";
 import img_sheetjs from "../assets/logos/sheetjs.png";
 import img_simulia_abaqus from "../assets/logos/simulia_abaqus.png";
 import img_wasm from "../assets/logos/wasm.png";
+import img_ts from "../assets/logos/ts.png";
+import img_cuda from "../assets/logos/cuda.png";
+import img_go from "../assets/logos/go.png";
+import img_aws from "../assets/logos/aws.png";
+import img_mysql from "../assets/logos/mysql.png";
+import img_duckdb from "../assets/logos/duckdb.png";
+import img_redshift from "../assets/logos/redshift.png";
 
 const links = {
   arduino: img_arduino,
@@ -56,6 +63,13 @@ const links = {
   sheetjs: img_sheetjs,
   simulia_abaqus: img_simulia_abaqus,
   wasm: img_wasm,
+  ts: img_ts,
+  cuda: img_cuda,
+  go: img_go,
+  aws: img_aws,
+  mysql: img_mysql,
+  duckdb: img_duckdb,
+  redshift: img_redshift,
 };
 
 function Logos({ logos }) {

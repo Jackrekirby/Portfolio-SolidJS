@@ -31,6 +31,7 @@ const me = [
     "Team Leader",
     "Organised",
     "Gamer",
+    "Badminton"
 ];
 
 const soft = [
@@ -40,6 +41,7 @@ const soft = [
     "HTML",
     "CSS",
     "JavaScript",
+    "Typescript",
     "React",
     "Express.js",
     "Sass",
@@ -48,7 +50,11 @@ const soft = [
     "Netlify",
     "Github",
     "Heroku",
-    "Amazon S3",
+    "AWS",
+    "Go",
+    "SQL",
+    "DuckDB",
+    "Cuda"
 ];
 
 export { me, mech, soft }

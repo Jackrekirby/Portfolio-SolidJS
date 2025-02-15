@@ -15,6 +15,20 @@ import img_web_ui from "../assets/projects/personal/raytracing/web_ui.png";
 import img_whe_v1 from "../assets/projects/personal/whe/v1.png";
 import img_whe_v2 from "../assets/projects/personal/whe/v2.png";
 
+import img_mca_demo_world from "../assets/projects/personal/minecraft_automata/demo_world.png";
+import img_mca_piston_door from "../assets/projects/personal/minecraft_automata/piston_door.png";
+import img_mca_3d_demo from "../assets/projects/personal/minecraft_automata/3d_demo.png";
+
+import img_cuda_main from "../assets/projects/personal/raytracing/cuda_main.png";
+import img_cuda_lights from "../assets/projects/personal/raytracing/cuda_lights.png";
+
+function HeaderSpacer({}) {
+  return (
+    <div style={{ 'min-height': '64px' }}></div>
+  );
+}
+
+
 function PersonalPage() {
   const mounters = useMounter();
   const { mount, dismount } = mounterFncs(mounters);
@@ -32,6 +46,7 @@ function PersonalPage() {
         width={"5.5rem"}
       ></BackBtn>
       <Boxes stateholder={mounters.personalPage}>
+        <HeaderSpacer></HeaderSpacer>
         <Box2 title={"Portfolio"}>
           <p>
             This website was build using react and sass, and is the second
@@ -67,33 +82,45 @@ function PersonalPage() {
             images={[
               {
                 src: img_color_normal,
-                alt: "environment 1",
+                alt: "rust version",
                 caption:
                   "An image generated using the raytracer. The Full HD resolution image, containing 30,000 sphere took 40 minutes to generate. Contains lambertian, metal and dielectric metals, of different colors, roughness and refractive indexes.",
               },
               {
                 src: img_color_large,
-                alt: "environment 1",
+                alt: "rust version zoomed out",
                 caption:
                   "An zoomed out image of the same scene, showing all 30,000 spheres",
               },
               {
                 src: img_samples_normal,
-                alt: "environment 1",
+                alt: "rust version samples per pixel",
                 caption:
                   "An image showing an optimisation to reduce the number of samples per pixel. Darker pixels used fewer rays to generate before their color stabilised to below a threshold tolerance. The sky and lambertian surfaces contain the darkest pixels. The lightest pixels occur on the boundary of sphere, dielectric and metalic surfaces.",
               },
               {
                 src: img_color_bvh,
-                alt: "environment 1",
+                alt: "rust version bounding volume hierachy",
                 caption:
                   "An image showing an optimisation to reduce the number of collision checks between a ray and all the spheres in the scene. This is done through dividing the spheres in the scene into a bounding volume hierachy. The spheres in each boundary volume are assigned a unique color.",
               },
               {
                 src: img_web_ui,
-                alt: "environment 1",
+                alt: "web interface",
                 caption:
                   "A web user interface to build spherical scenes and render them.",
+              },
+              {
+                src: img_cuda_main,
+                alt: "cuda version",
+                caption:
+                  "A re-implementation of the raytracing in C++ with Cuda. Includes skybox.",
+              },
+              {
+                src: img_cuda_lights,
+                alt: "cuda version lightning",
+                caption:
+                  "A re-implementation of the raytracing in C++ with Cuda. Includes lighting.",
               },
             ]}
           ></SlideShow>
@@ -101,6 +128,8 @@ function PersonalPage() {
           <p>
             An implementation of Ray Tracing in One Weekend using Rust, with a
             web user interface to build scenes using WASM, p5 and Tweakpane.
+
+            I also repeated the project with Cuda in C++. This version added a skybox and basic lighting.
           </p>
 
           <Links
@@ -110,11 +139,65 @@ function PersonalPage() {
                 href: "https://github.com/Jackrekirby/Ray-Tracing",
                 icon: "Github",
               },
+              {
+                name: "github.com/Jackrekirby/Raytracing-Cuda",
+                href: "https://github.com/Jackrekirby/Raytracing-Cuda",
+                icon: "Github",
+              },
             ]}
           ></Links>
 
           <Logos
-            logos={["html", "js", "css", "github", "rust", "wasm"]}
+            logos={["html", "js", "css", "github", "rust", "wasm", 'cpp', 'cuda']}
+          ></Logos>
+        </Box2>
+
+        <Box2 title={"Minecraft Automata"}>
+        <SlideShow
+            images={[
+              {
+                src: img_mca_demo_world,
+                alt: "demo world",
+                caption:
+                  "A screenshot of the demo world, containing a variety of comptraptions to demonstrate all block types",
+              },
+              {
+                src: img_mca_piston_door,
+                alt: "3 x 3 piston door",
+                caption:
+                  "A screenshot of a 3x3 piston door along with the command system",
+              },
+              {
+                src: img_mca_3d_demo,
+                alt: "3D demo world",
+                caption:
+                  "A screenshot of the demo world in the Go-based version",
+              },
+            ]}
+          ></SlideShow>
+          <p>
+            I wanted to build a minecraft redstone simulation tool for the web. I set myself the challenge of doing this as a cellular automata, where all blocks can be updated in parallel, rather than via a queue based system. This project was build from scratch in typescript, using the 2D canvas.
+
+            I also repeated the project with a 3D world, written in Go and compiled to Web Assembly. This version was short lived, with only a few block types. The project was discontinued due to performance issues related to building a single-threaded CPU-based 3D renderer.
+          </p>
+
+          <Links
+            links={[
+              {
+                name: "github.com/jackrekirby/minecraft-ca-ts",
+                href: "https://github.com/jackrekirby/minecraft-ca-ts",
+                icon: "Github",
+              },
+              {
+                name: "github.com/jackrekirby/minecraft-ca-go",
+                href: "https://github.com/jackrekirby/minecraft-ca-go",
+                icon: "Github",
+              },
+            ]}
+          ></Links>
+
+          <Logos
+            logos={["html", "ts", "css", "github", 'go', 'wasm']}
           ></Logos>
         </Box2>
 
@@ -159,24 +242,14 @@ function PersonalPage() {
           <Links
             links={[
               {
-                name: "GitHub - Version 1",
+                name: "github.com/Jackrekirby/Netflix-Watch-History",
                 href: "https://github.com/Jackrekirby/Netflix-Watch-History",
                 icon: "Github",
               },
               {
-                name: "GitHub - Version 2",
+                name: "github.com/Jackrekirby/Netflix-Watch-History-V2",
                 href: "https://github.com/Jackrekirby/Netflix-Watch-History-V2",
                 icon: "Github",
-              },
-              {
-                name: "Website - Version 1",
-                href: "https://github.com/Jackrekirby/Netflix-Watch-History",
-                icon: "Website",
-              },
-              {
-                name: "Website - Version 2",
-                href: "https://https://watch-history-explorer.netlify.app",
-                icon: "Website",
               },
             ]}
           ></Links>
