@@ -13,6 +13,11 @@ function HeaderSpacer({}) {
   );
 }
 
+const setLoc = (loc) => {
+  window.location.hash = loc
+};
+
+
 function HychainPage() {
   const mounters = useMounter();
 
@@ -27,6 +32,7 @@ function HychainPage() {
         onClick={() => {
           dismount(["hychainPage"], 0);
           mount(["backHomeBtn", "softPage"], 1);
+          setLoc('software')
         }}
         width={"5.5rem"}
       ></BackBtn>

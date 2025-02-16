@@ -14,6 +14,11 @@ function HeaderSpacer({}) {
   );
 }
 
+const setLoc = (loc) => {
+  window.location.hash = loc
+};
+
+
 function HeatmyhomePage() {
   const mounters = useMounter();
   const { mount, dismount } = mounterFncs(mounters);
@@ -27,12 +32,13 @@ function HeatmyhomePage() {
         onClick={() => {
           dismount(["heatmyhomePage"], 0);
           mount(["backHomeBtn", "softPage"], 1);
+          setLoc('software')
         }}
         width={"5.5rem"}
       ></BackBtn>
       <Boxes stateholder={mounters.heatmyhomePage}>
         <HeaderSpacer></HeaderSpacer>
-        <Box2 title={"HeatMyHome.ninja"}>
+        <Box2 title={"Heat My Home"}>
           <SlideShow
             images={[
               {

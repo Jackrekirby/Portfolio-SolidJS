@@ -4,6 +4,10 @@ import Boxes from "../components/Boxes";
 import { mounterFncs, useMounter } from "../components/MounterProvider";
 import Technologies from "../components/Technologies";
 
+const setLoc = (loc) => {
+  window.location.hash = loc
+};
+
 function AuroraPage() {
   const mounters = useMounter();
 
@@ -18,6 +22,7 @@ function AuroraPage() {
         onClick={() => {
           dismount(["auroraPage"], 0);
           mount(["backHomeBtn", "softPage"], 1);
+          setLoc('software')
         }}
         width={"5.5rem"}
       ></BackBtn>

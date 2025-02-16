@@ -7,7 +7,6 @@ import {
   IconWebsite,
 } from "../components/FontAwesome";
 import { mounterFncs, useMounter } from "../components/MounterProvider";
-import BackBtn from "../components/BackBtn";
 
 function HeaderSpacer({}) {
   return (
@@ -15,6 +14,9 @@ function HeaderSpacer({}) {
   );
 }
 
+const setLoc = (loc) => {
+  window.location.hash = loc
+};
 
 function SoftwarePage() {
   const mounters = useMounter();
@@ -72,6 +74,7 @@ function SoftwarePage() {
               onClick={() => {
                 dismount(["backHomeBtn", "softPage"], 0);
                 mount(["auroraPage"], 1);
+                setLoc('software-aurora')
               }}
             >
               Aurora Energy Research
@@ -98,6 +101,7 @@ function SoftwarePage() {
               onClick={() => {
                 dismount(["backHomeBtn", "softPage"], 0);
                 mount(["hychainPage"], 1);
+                setLoc('software-hychain')
               }}
             >
               HyChain
@@ -134,6 +138,7 @@ function SoftwarePage() {
               onClick={() => {
                 dismount(["backHomeBtn", "softPage"], 0);
                 mount(["heatmyhomePage"], 1);
+                setLoc('software-heatmyhome')
               }}
             >
               Heat My Home
@@ -161,6 +166,7 @@ function SoftwarePage() {
               onClick={() => {
                 dismount(["backHomeBtn", "softPage"], 0);
                 mount(["accordPage"], 1);
+                setLoc('software-accord')
               }}
             >
               AcCoRD 2.0
@@ -183,6 +189,7 @@ function SoftwarePage() {
               onClick={() => {
                 dismount(["backHomeBtn", "softPage"], 0);
                 mount(["personalPage"], 1);
+                setLoc('software-personal')
               }}
             >
               Personal

@@ -19,6 +19,11 @@ function HeaderSpacer({}) {
   );
 }
 
+const setLoc = (loc) => {
+  window.location.hash = loc
+};
+
+
 function AccordPage() {
   const mounters = useMounter();
   const { mount, dismount } = mounterFncs(mounters);
@@ -32,6 +37,7 @@ function AccordPage() {
         onClick={() => {
           dismount(["accordPage"], 0);
           mount(["backHomeBtn", "softPage"], 1);
+          setLoc('software')
         }}
         width={"5.5rem"}
       ></BackBtn>

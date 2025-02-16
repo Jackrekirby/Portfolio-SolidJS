@@ -28,6 +28,11 @@ function HeaderSpacer({}) {
   );
 }
 
+const setLoc = (loc) => {
+  window.location.hash = loc
+};
+
+
 
 function PersonalPage() {
   const mounters = useMounter();
@@ -42,6 +47,7 @@ function PersonalPage() {
         onClick={() => {
           dismount(["personalPage"], 0);
           mount(["backHomeBtn", "softPage"], 1);
+          setLoc('software')
         }}
         width={"5.5rem"}
       ></BackBtn>
