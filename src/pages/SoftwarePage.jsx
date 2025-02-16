@@ -7,6 +7,7 @@ import {
   IconWebsite,
 } from "../components/FontAwesome";
 import { mounterFncs, useMounter } from "../components/MounterProvider";
+import BackBtn from "../components/BackBtn";
 
 function HeaderSpacer({}) {
   return (
@@ -69,7 +70,7 @@ function SoftwarePage() {
             </div>
             <h2
               onClick={() => {
-                dismount(["softPage"], 0);
+                dismount(["backHomeBtn", "softPage"], 0);
                 mount(["auroraPage"], 1);
               }}
             >
@@ -95,7 +96,7 @@ function SoftwarePage() {
             </div>
             <h2
               onClick={() => {
-                dismount(["softPage"], 0);
+                dismount(["backHomeBtn", "softPage"], 0);
                 mount(["hychainPage"], 1);
               }}
             >
@@ -131,7 +132,7 @@ function SoftwarePage() {
             </div>
             <h2
               onClick={() => {
-                dismount(["softPage"], 0);
+                dismount(["backHomeBtn", "softPage"], 0);
                 mount(["heatmyhomePage"], 1);
               }}
             >
@@ -158,7 +159,7 @@ function SoftwarePage() {
             </div>
             <h2
               onClick={() => {
-                dismount(["softPage"], 0);
+                dismount(["backHomeBtn", "softPage"], 0);
                 mount(["accordPage"], 1);
               }}
             >
@@ -180,7 +181,7 @@ function SoftwarePage() {
             </div>
             <h2
               onClick={() => {
-                dismount(["softPage"], 0);
+                dismount(["backHomeBtn", "softPage"], 0);
                 mount(["personalPage"], 1);
               }}
             >

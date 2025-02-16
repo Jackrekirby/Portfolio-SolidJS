@@ -27,9 +27,14 @@ function Boxes({ stateholder, children }) {
   const either = (x, a, b) => x == a || x == b;
 
   createEffect(() => {
+    // pad right so when scroll bar loads in page does not shift
     if (either(stateholder.state(), 1, 4)) {
-      // console.log("boxes-overflow", element.scrollHeight, window.innerHeight);
-      setOverflow(element.scrollHeight > window.innerHeight);
+      // if(element.scrollHeight > window.innerHeight) {
+      //   console.log("box overflows", {element, elementHeight: element.scrollHeight, windowHeight: window.innerHeight});
+      // } else {
+      //   console.log("box does not overflow", {element, elementHeight: element.scrollHeight, windowHeight: window.innerHeight});
+      // }
+      setOverflow(element.scrollHeight > window.innerHeight - 100); // 100 = account for under estimate if scroll bar visible
     }
   });
 

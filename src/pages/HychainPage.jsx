@@ -4,9 +4,14 @@ import Boxes from "../components/Boxes";
 import { mounterFncs, useMounter } from "../components/MounterProvider";
 import SlideShow from "../components/SlideShow";
 import Technologies from "../components/Technologies";
-
 import img_1 from "../assets/projects/hychain/img1.png";
 import img_2 from "../assets/projects/hychain/img2.png";
+
+function HeaderSpacer({}) {
+  return (
+    <div style={{ 'min-height': '64px' }}></div>
+  );
+}
 
 function HychainPage() {
   const mounters = useMounter();
@@ -18,14 +23,15 @@ function HychainPage() {
       <BackBtn
         stateholder={mounters.hychainPage}
         name={"Software"}
-        order={1}
+        order={0}
         onClick={() => {
           dismount(["hychainPage"], 0);
-          mount(["softPage"], 1);
+          mount(["backHomeBtn", "softPage"], 1);
         }}
         width={"5.5rem"}
       ></BackBtn>
       <Boxes stateholder={mounters.hychainPage}>
+        <HeaderSpacer></HeaderSpacer>
         <Box2 title={"HyChain.co.uk"}>
           <SlideShow
             images={[
@@ -66,6 +72,7 @@ function HychainPage() {
             "expressjs",
           ]}
         ></Technologies>
+    
       </Boxes>
     </>
   );

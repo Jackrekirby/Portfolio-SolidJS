@@ -14,10 +14,10 @@ function AuroraPage() {
       <BackBtn
         stateholder={mounters.auroraPage}
         name={"Software"}
-        order={1}
+        order={0}
         onClick={() => {
           dismount(["auroraPage"], 0);
-          mount(["softPage"], 1);
+          mount(["backHomeBtn", "softPage"], 1);
         }}
         width={"5.5rem"}
       ></BackBtn>

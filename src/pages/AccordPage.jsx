@@ -13,6 +13,12 @@ import img_plot_2 from "../assets/projects/accord/plot 2.png";
 import img_env_3 from "../assets/projects/accord/env 3.png";
 import img_plot_3 from "../assets/projects/accord/plot 3.png";
 
+function HeaderSpacer({}) {
+  return (
+    <div style={{ 'min-height': '64px' }}></div>
+  );
+}
+
 function AccordPage() {
   const mounters = useMounter();
   const { mount, dismount } = mounterFncs(mounters);
@@ -22,14 +28,15 @@ function AccordPage() {
       <BackBtn
         stateholder={mounters.accordPage}
         name={"Software"}
-        order={1}
+        order={0}
         onClick={() => {
           dismount(["accordPage"], 0);
-          mount(["softPage"], 1);
+          mount(["backHomeBtn", "softPage"], 1);
         }}
         width={"5.5rem"}
       ></BackBtn>
       <Boxes stateholder={mounters.accordPage}>
+        <HeaderSpacer></HeaderSpacer>
         <Box2 title={"AcCoRD 2.0"}>
           <p>
             AcCoRD 2.0 (Actor-based Communication via Reaction-Diffusion) is a

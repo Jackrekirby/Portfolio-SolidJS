@@ -38,10 +38,10 @@ function PersonalPage() {
       <BackBtn
         stateholder={mounters.personalPage}
         name={"Software"}
-        order={1}
+        order={0}
         onClick={() => {
           dismount(["personalPage"], 0);
-          mount(["softPage"], 1);
+          mount(["backHomeBtn", "softPage"], 1);
         }}
         width={"5.5rem"}
       ></BackBtn>
@@ -77,7 +77,7 @@ function PersonalPage() {
           ></Logos>
         </Box2>
 
-        <Box2 title={"RayTracing"}>
+        <Box2 title={"Ray Tracing"}>
           <SlideShow
             images={[
               {

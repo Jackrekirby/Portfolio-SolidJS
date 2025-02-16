@@ -8,6 +8,12 @@ import Technologies from "../components/Technologies";
 import img_home from "../assets/projects/heatmyhome/home.png";
 import img_results from "../assets/projects/heatmyhome/results.png";
 
+function HeaderSpacer({}) {
+  return (
+    <div style={{ 'min-height': '64px' }}></div>
+  );
+}
+
 function HeatmyhomePage() {
   const mounters = useMounter();
   const { mount, dismount } = mounterFncs(mounters);
@@ -17,14 +23,15 @@ function HeatmyhomePage() {
       <BackBtn
         stateholder={mounters.heatmyhomePage}
         name={"Software"}
-        order={1}
+        order={0}
         onClick={() => {
           dismount(["heatmyhomePage"], 0);
-          mount(["softPage"], 1);
+          mount(["backHomeBtn", "softPage"], 1);
         }}
         width={"5.5rem"}
       ></BackBtn>
       <Boxes stateholder={mounters.heatmyhomePage}>
+        <HeaderSpacer></HeaderSpacer>
         <Box2 title={"HeatMyHome.ninja"}>
           <SlideShow
             images={[
