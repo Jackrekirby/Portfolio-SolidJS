@@ -83,7 +83,7 @@ function MounterApp() {
   const [pageInTransition, setPageInTransition] = createSignal(true)
 
   const { mount, dismount } = mounterFncs(mounters);
-
+  
   const setPageLoaded = (delayInSeconds) => {
     setTimeout(() => {
       // console.log('page loaded')
@@ -142,7 +142,7 @@ function MounterApp() {
     <>
       <ColorProvider hue={215} saturation={18} lightness={57}>
         <Box stateHolder={mounters.me} isVertical={false}>
-          <BgText stateHolder={mounters.meBgtext} text={BgTextList.me}></BgText>
+          <BgText stateHolder={mounters.meBgtext} text={'about'}></BgText>
 
           <div class={styles.HomeBoxInner}>
             <BackBtn
@@ -184,7 +184,7 @@ function MounterApp() {
             <Box stateHolder={mounters.mech} isVertical={true}>
               <BgText
                 stateHolder={mounters.mechBgtext}
-                text={BgTextList.mech}
+                text={'mech'}
               ></BgText>
 
               <BackBtn
@@ -225,7 +225,7 @@ function MounterApp() {
             <Box stateHolder={mounters.soft} isVertical={true}>
               <BgText
                 stateHolder={mounters.softBgtext}
-                text={BgTextList.soft}
+                text={'soft'}
               ></BgText>
 
               <BackBtn

@@ -1,31 +1,34 @@
 .BgText {
-    position: absolute;
-    --padding: 5px;
-    top: var(--padding);
-    left: var(--padding);
-    bottom: var(--padding);
-    right: var(--padding);
-    overflow: hidden;
-    color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  /* --padding: -5px;
+  top: var(--padding);
+  left: var(--padding);
+  bottom: var(--padding);
+  right: var(--padding); */
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  /* color: rgba(255, 255, 255, 0.1); */
 
-    transition: all 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
 
 .BgText p {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200vmax;
-    height: 200vmax;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200vmax;
+  height: 200vmax;
 
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-    transform: translate(-50%, -50%) rotate(-45deg);
-    overflow: hidden;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  overflow: hidden;
 
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
